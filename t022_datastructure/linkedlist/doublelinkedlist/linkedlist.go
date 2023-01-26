@@ -74,3 +74,22 @@ func (l LinkedList[T]) isInclude(node *Node[T]) bool {
 	}
 	return false
 }
+
+func (l *LinkedList[T]) InsertAfter(node *Node[T], val T) {
+	if !l.isInclude(node) {
+		return
+	}
+	n := &Node[T]{Value: val}
+
+	nn := node.next
+	n.next = nn
+	node.next = n
+	n.prev = node
+
+	if nn != nil {
+		nn.prev = n
+	} else {
+		l.tail = n
+	}
+	l.count++
+}
