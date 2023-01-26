@@ -151,7 +151,7 @@ func (l *LinkedList[T]) Reverse() {
 	for l.root != nil {
 		l2.PushFront(l.PopFront().Value)
 	}
-	l.root, l.tail = l2.root, l2.tail
+	l.count, l.root, l.tail = l2.count, l2.root, l2.tail
 }
 
 func (l *LinkedList[T]) Reverce2() {
@@ -168,5 +168,5 @@ func (l *LinkedList[T]) Reverce2() {
 		c, n = n, nn
 	}
 
-	l.root.next = nil
+	l.root, l.tail = l.tail, l.root
 }
