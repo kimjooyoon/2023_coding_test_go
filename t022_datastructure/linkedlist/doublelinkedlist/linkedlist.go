@@ -151,3 +151,22 @@ func (l *LinkedList[T]) PopFront() *Node[T] {
 
 	return res
 }
+
+func (l *LinkedList[T]) Remove(node *Node[T]) {
+	if node == l.root {
+		l.PopFront()
+		return
+	} else if node == l.tail {
+		l.PopBack()
+		return
+	}
+	if !l.isInclude(node) {
+		return
+	}
+
+	node.prev.next, node.next.prev = node.next, node.prev
+	node.prev = nil
+	node.next = nil
+
+	l.count--
+}
