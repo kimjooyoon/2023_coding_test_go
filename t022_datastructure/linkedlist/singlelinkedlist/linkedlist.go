@@ -91,7 +91,7 @@ func (l LinkedList[T]) isCluded(node *Node[T]) bool {
 }
 
 func (l *LinkedList[T]) InsertBefore(node *Node[T], value T) {
-	if l.root == nil {
+	if l.root == node {
 		l.PushFront(value)
 		return
 	}

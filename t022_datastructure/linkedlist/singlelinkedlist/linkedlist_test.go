@@ -85,3 +85,15 @@ func TestLinkedList_InsertAfter(t *testing.T) {
 	assert.Equal(t, 4, l.Count2())
 	assert.Equal(t, 4, l.GetAt(2).val)
 }
+
+func TestLinkedList_InsertBefore(t *testing.T) {
+	var l = LinkedList[int]{}
+
+	l.PushBack(1)
+	l.PushBack(2)
+	l.PushBack(3)
+	l.InsertBefore(l.GetAt(0), 4)
+
+	assert.Equal(t, 4, l.Count2())
+	assert.Equal(t, 4, l.Front().val)
+}
