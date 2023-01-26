@@ -93,3 +93,23 @@ func (l *LinkedList[T]) InsertAfter(node *Node[T], val T) {
 	}
 	l.count++
 }
+
+func (l *LinkedList[T]) InsertBefore(node *Node[T], val T) {
+	if !l.isInclude(node) {
+		return
+	}
+	n := &Node[T]{Value: val}
+
+	pp := node.prev
+	node.prev = n
+
+	n.next = node
+	n.prev = pp
+
+	if pp != nil {
+		pp.next = n
+	} else {
+		l.root = n
+	}
+	l.count++
+}
