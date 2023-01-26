@@ -207,7 +207,7 @@ func TestLinkedList_Reverce2(t *testing.T) {
 	l.PushBack(2)
 	l.PushBack(3)
 	l.PushBack(4)
-	l.Reverce2()
+	l.Reverse2()
 
 	assert.Equal(t, 4, l.Front().Value)
 	assert.Equal(t, 1, l.Back().Value)

@@ -154,7 +154,7 @@ func (l *LinkedList[T]) Reverse() {
 	l.count, l.root, l.tail = l2.count, l2.root, l2.tail
 }
 
-func (l *LinkedList[T]) Reverce2() {
+func (l *LinkedList[T]) Reverse2() {
 	if l.root == nil {
 		return
 	}
