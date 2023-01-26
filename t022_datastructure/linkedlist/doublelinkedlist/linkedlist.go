@@ -51,3 +51,17 @@ func (l *LinkedList[T]) PushBack(val T) {
 	l.tail = n
 	l.count++
 }
+
+func (l *LinkedList[T]) PushFront(val T) {
+	n := &Node[T]{Value: val}
+	if l.root == nil {
+		l.root, l.tail = n, n
+		l.count = 1
+		return
+	}
+
+	l.root.prev = n
+	n.next = l.root
+	l.root = n
+	l.count++
+}
