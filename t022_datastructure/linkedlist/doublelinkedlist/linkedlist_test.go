@@ -105,3 +105,22 @@ func TestLinkedList_InsertBefore(t *testing.T) {
 	l.InsertBefore(l.Front(), 10)
 	assert.Equal(t, 10, l.Front().Value)
 }
+
+func TestLinkedList_PopFront(t *testing.T) {
+	var l LinkedList[int]
+
+	l.PushBack(1)
+	l.PushBack(2)
+	l.PushBack(3)
+
+	node := l.GetAt(1)
+	l.InsertBefore(node, 4)
+
+	assert.Equal(t, 4, l.Count())
+	assert.Equal(t, 4, l.GetAt(1).Value)
+	assert.Equal(t, 2, l.GetAt(2).Value)
+	assert.Equal(t, 3, l.Back().Value)
+
+	l.InsertBefore(l.Front(), 10)
+	assert.Equal(t, 10, l.Front().Value)
+}

@@ -113,3 +113,16 @@ func (l *LinkedList[T]) InsertBefore(node *Node[T], val T) {
 	}
 	l.count++
 }
+
+func (l *LinkedList[T]) PopBack() *Node[T] {
+	if l.root == nil {
+		return nil
+	}
+	res := l.tail
+	l.tail.prev.next = nil
+	l.tail = l.tail.prev
+	l.count--
+	res.prev = nil
+
+	return res
+}
