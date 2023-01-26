@@ -170,3 +170,14 @@ func (l *LinkedList[T]) Remove(node *Node[T]) {
 
 	l.count--
 }
+
+func (l *LinkedList[T]) Reverse() {
+	if l.root == nil {
+		return
+	}
+	for n := l.root; n != nil; n = n.next {
+		n.next, n.prev = n.prev, n.next
+	}
+	l.root, l.tail = l.tail, l.root
+	l.root.next, l.tail.prev = l.root.prev, l.tail.next
+}
