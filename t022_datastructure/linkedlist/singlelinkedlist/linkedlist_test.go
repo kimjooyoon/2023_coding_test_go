@@ -64,3 +64,24 @@ func TestLinkedList_PushFront(t *testing.T) {
 	assert.Equal(t, 1, l.GetAt(2).val)
 	assert.Nil(t, l.GetAt(3))
 }
+
+func TestLinkedList_InsertAfter(t *testing.T) {
+	var l LinkedList[int]
+
+	l.PushBack(1)
+	l.PushBack(2)
+	l.PushBack(3)
+
+	node := l.GetAt(1)
+	l.InsertAfter(node, 4)
+
+	assert.Equal(t, 4, l.Count2())
+	assert.Equal(t, 4, l.GetAt(2).val)
+	assert.Equal(t, 3, l.Back().val)
+
+	tempNode := &Node[int]{val: 10}
+	l.InsertAfter(tempNode, 200)
+
+	assert.Equal(t, 4, l.Count2())
+	assert.Equal(t, 4, l.GetAt(2).val)
+}
