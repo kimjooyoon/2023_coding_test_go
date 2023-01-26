@@ -1,8 +1,8 @@
 package singlelinkedlist
 
 type Node[T any] struct {
-	next *Node[T]
-	val  T
+	next  *Node[T]
+	Value T
 }
 
 type LinkedList[T any] struct {
@@ -13,7 +13,7 @@ type LinkedList[T any] struct {
 }
 
 func (l *LinkedList[T]) PushBack(value T) {
-	n := &Node[T]{val: value}
+	n := &Node[T]{Value: value}
 	l.count++
 	if l.root == nil {
 		l.root = n
@@ -25,7 +25,7 @@ func (l *LinkedList[T]) PushBack(value T) {
 }
 
 func (l *LinkedList[T]) PushFront(value T) {
-	n := &Node[T]{val: value}
+	n := &Node[T]{Value: value}
 	l.count++
 	if l.root == nil {
 		l.root = n
@@ -75,7 +75,7 @@ func (l *LinkedList[T]) InsertAfter(node *Node[T], value T) {
 	if !l.isCluded(node) {
 		return
 	}
-	n := &Node[T]{val: value}
+	n := &Node[T]{Value: value}
 
 	n.next, node.next = node.next, n
 	l.count++
@@ -100,7 +100,7 @@ func (l *LinkedList[T]) InsertBefore(node *Node[T], value T) {
 		return
 	}
 
-	n := &Node[T]{val: value}
+	n := &Node[T]{Value: value}
 
 	pre.next, n.next = n, node
 	l.count++
@@ -149,7 +149,7 @@ func (l *LinkedList[T]) Remove(node *Node[T]) {
 func (l *LinkedList[T]) Reverse() {
 	l2 := &LinkedList[T]{}
 	for l.root != nil {
-		l2.PushFront(l.PopFront().val)
+		l2.PushFront(l.PopFront().Value)
 	}
 	l.root, l.tail = l2.root, l2.tail
 }
