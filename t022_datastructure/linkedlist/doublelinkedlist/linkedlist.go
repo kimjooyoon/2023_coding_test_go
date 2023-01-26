@@ -65,3 +65,12 @@ func (l *LinkedList[T]) PushFront(val T) {
 	l.root = n
 	l.count++
 }
+
+func (l LinkedList[T]) isInclude(node *Node[T]) bool {
+	for n := l.root; n != nil; n = n.next {
+		if n == node {
+			return true
+		}
+	}
+	return false
+}
