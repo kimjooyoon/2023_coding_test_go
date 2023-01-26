@@ -119,10 +119,35 @@ func (l *LinkedList[T]) PopBack() *Node[T] {
 		return nil
 	}
 	res := l.tail
-	l.tail.prev.next = nil
+
+	if l.tail.prev != nil {
+		l.tail.prev.next = nil
+	} else {
+		l.root = nil
+	}
+
 	l.tail = l.tail.prev
 	l.count--
 	res.prev = nil
+
+	return res
+}
+
+func (l *LinkedList[T]) PopFront() *Node[T] {
+	if l.root == nil {
+		return nil
+	}
+
+	res := l.root
+	if l.root.next != nil {
+		l.root.next.prev = nil
+	} else {
+		l.tail = nil
+	}
+
+	l.root = l.root.next
+	l.count--
+	res.next = nil
 
 	return res
 }
